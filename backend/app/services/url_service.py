@@ -1,6 +1,6 @@
 import string
 from datetime import datetime
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from nanoid import generate
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
@@ -18,7 +18,8 @@ def generate_unique_token(db: Session, size: int) -> str:
             exists = db.query(Url).filter(Url.token == token).first()
         except SQLAlchemyError as e:
             raise HTTPException(
-                status_code=404, detail="Erro ao consultar token no banco: {e}"
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Erro ao consultar token no banco: {e}",
             )
         if not exists:
             return token
@@ -41,6 +42,9 @@ def generate_url_data(db: Session, owner_name: str) -> Url:
             expiration_date=expiration_date,
         )
     except Exception as e:
-        raise HTTPException(status_code=404, detail="Erro ao cadastrar o link: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Erro ao cadastrar o link: {e}",
+        )
 
     return url
