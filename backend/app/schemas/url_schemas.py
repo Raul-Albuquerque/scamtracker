@@ -14,12 +14,10 @@ class UrlRead(BaseModel):
     creation_date: int
     expiration_date: int
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
 
 
 class UrlList(BaseModel):
     urls: list[UrlRead]
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}

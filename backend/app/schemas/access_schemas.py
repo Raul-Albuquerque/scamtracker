@@ -30,12 +30,10 @@ class AccessRead(BaseModel):
     access_timestamp: int
     url_id: int
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
 
 
 class AccessList(BaseModel):
     access_list: list[AccessRead]
 
-    class Config:
-        from_attributes = True
+    model_config = {"from_attributes": True}
