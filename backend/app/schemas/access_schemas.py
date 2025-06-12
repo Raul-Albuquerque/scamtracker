@@ -28,14 +28,14 @@ class AccessRead(BaseModel):
     region: str
     hostname: str
     access_timestamp: int
-    link_id: str
+    url_id: int
 
     class Config:
         from_attributes = True
 
 
 class AccessList(BaseModel):
-    access_list = list[AccessRead]
+    access_list: list[AccessRead]
 
     class Config:
         from_attributes = True

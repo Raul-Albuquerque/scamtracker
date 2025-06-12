@@ -22,7 +22,7 @@ def get_all_urls(db: Session = Depends(get_db)):
         )
 
 
-@router.get("/url/{token}")
+@router.get("/{token}")
 def get_url_from_token(token: str, db: Session = Depends(get_db)):
     try:
         url = db.query(Url).filter(Url.token == token).first()
