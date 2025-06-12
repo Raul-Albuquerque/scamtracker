@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from database import Base
+from app.database import Base
 
 
 class Access(Base):
@@ -20,4 +20,4 @@ class Access(Base):
     access_timestamp = Column(Integer, nullable=False)
     url_id = Column(Integer, ForeignKey("urls.id"), nullable=False)
 
-    urls = relationship("Url", back_populates="Access")
+    urls = relationship("Url", back_populates="access")

@@ -5,3 +5,4 @@ load_dotenv(override=True)
 
 TIMEZONE = pytz.timezone("America/Sao_Paulo")
 URL_DATABASE = os.getenv("URL_DATABASE")
+BASE_URL = os.getenv("BASE_URL")

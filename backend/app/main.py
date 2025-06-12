@@ -1,15 +1,11 @@
-from typing import Union
+from fastapi import FastAPI
 
-from fastapi import FastAPI, HTTPException, Depends
+from app.database import Base, engine
+from app.models import url_model, access_model
+from .api.v1 import api_v1_router
 
 app = FastAPI()
 
+Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World!"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+app.include_router(api_v1_router, prefix="/api/v1")
