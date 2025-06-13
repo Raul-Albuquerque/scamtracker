@@ -8,6 +8,22 @@ volumes:
 
 
 services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
   backend:
     container_name: backend-FastAPI
     build:
