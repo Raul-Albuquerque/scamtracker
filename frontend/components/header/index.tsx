@@ -61,7 +61,7 @@ export const Header = () => {
             href={"#"}
             className="flex justify-start items-center gap-5 text-muted-foreground hover:text-foreground"
           >
-            <Github size="icon" className="w-5 h-5 text-neutral-100" />
+            <Github size="icon" className="w-5 h-5 text-neutral-100 hover:text-red-500" />
             <span className="sr-only">Repositório Github</span>
           </Link>
           <Link
