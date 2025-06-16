@@ -7,11 +7,13 @@ import { Activity, AlignJustify, ChartColumnBig, Github, Home, SquareActivity } 
 import { DialogContent, DialogTitle } from "@radix-ui/react-dialog"
 
 
-export const Header = () => {
+export function Header() {
   return (
     <div className="bg-neutral-900">
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <Image src={"/static/images/logo.svg"} alt="Scamtracker logo" width={160} height={24} />
+        <Link href={"/"}>
+          <Image src={"/static/images/logo.svg"} alt="Scamtracker logo" width={160} height={24} />
+        </Link>
 
         <div className="sm:hidden">
           <Sheet>
@@ -24,32 +26,33 @@ export const Header = () => {
             <SheetContent className="sm:max-w-x:">
               <nav className="grid gap-4 text-md font-medium">
                 <Link
-                  href={"#"}
+                  href={"/"}
                   className="flex my-4 mx-4 border-b-1 pb-4 border-neutral-200"
                 >
                   <Image src={"/static/images/logo-black.svg"} alt="Scamtracker logo" width={140} height={16} />
                   <DialogTitle className="sr-only">Logo</DialogTitle>
                 </Link>
                 <Link
-                  href={"#"}
+                  href={"/"}
                   className="flex mt-2 mx-4 justify-start items-center gap-2 text-muted-foreground hover:text-foreground"
                 >
                   <Home size="icon" className="w-6 h-6" />
                   <span className="">Início</span>
                 </Link>
                 <Link
-                  href={"#"}
+                  href={"https://github.com/Raul-Albuquerque/scamtracker"}
                   className="flex mx-4 justify-start items-center gap-2 text-muted-foreground hover:text-foreground"
                 >
-                  <ChartColumnBig size="icon" className="w-6 h-6" />
-                  <span className="">Dashboard</span>
+                  <Github size="icon" className="w-6 h-6" />
+                  <span className="">Repositório do Projeto</span>
                 </Link>
                 <Link
-                  href={"#"}
-                  className="flex mx-4 justify-start items-center gap-2 text-muted-foreground hover:text-foreground"
+                  href={"/dashboard"}
+                  className="mx-4 text-center"
                 >
-                  <SquareActivity size="icon" className="w-6 h-6" />
-                  <span className="">Histórico de Acessos</span>
+                  <Button className="bg-neutral-950 text-neutral-50 hover:bg-neutral-400 hover:text-neutral-800 max-w-80 px-20 cursor-pointer py-6 text-base">
+                    Acessar Painel
+                  </Button>
                 </Link>
               </nav>
             </SheetContent>
@@ -58,18 +61,18 @@ export const Header = () => {
 
         <div className="hidden sm:flex items-center justify-end gap-5">
           <Link
-            href={"#"}
+            href={"https://github.com/Raul-Albuquerque/scamtracker"}
             className="flex justify-start items-center gap-5 text-muted-foreground hover:text-foreground"
           >
             <Github size="icon" className="w-5 h-5 text-neutral-100 hover:text-red-500" />
             <span className="sr-only">Repositório Github</span>
           </Link>
           <Link
-            href={"#"}
+            href={"/dashboard"}
             className="text-muted-foreground hover:text-foreground"
           >
             <Button className="bg-neutral-50 text-neutral-950 hover:bg-neutral-800 hover:text-neutral-50 cursor-pointer">
-              Acessar painel
+              Acessar Painel
             </Button>
           </Link>
         </div>
