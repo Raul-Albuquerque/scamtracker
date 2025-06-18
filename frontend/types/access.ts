@@ -1,15 +1,17 @@
 export type Access = {
   "id": number,
   "os": string,
-  "platform": string,
+  "browser": string,
+  "ip": string,
   "city": string,
+  "state": string,
   "country": string,
-  "location": string,
-  "net_provider": string,
+  "country_flag_url": string,
+  "latitude": string,
+  "longitude": string,
   "postal": string,
-  "region": string,
-  "hostname": string,
   "access_timestamp": number,
+  "url_id": number
 }
 
 export type AccessList = Access[]

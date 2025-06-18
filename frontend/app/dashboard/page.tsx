@@ -54,10 +54,7 @@ const DashboardPage = () => {
             </div>
           </div>
         ) : (
-          <div className="max-w-5xl mx-4">
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mb-5">
-              Lista de acessos
-            </h3>
+          <div className="p-4 mx-4">
             <CustomTable />
           </div>
         )}
