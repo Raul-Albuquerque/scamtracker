@@ -4,14 +4,15 @@ from pydantic import BaseModel
 class AccessCreate(BaseModel):
     id: int
     os: str
-    platform: str
+    browser: str
+    ip: str
     city: str
+    state: str
     country: str
-    location: str
-    net_provider: str
+    country_flag_url: str
+    latitude: str
+    longitude: str
     postal: str
-    region: str
-    hostname: str
     token: str
     access_timestamp: int
 
@@ -19,14 +20,15 @@ class AccessCreate(BaseModel):
 class AccessRead(BaseModel):
     id: int
     os: str
-    platform: str
+    browser: str
+    ip: str
     city: str
+    state: str
     country: str
-    location: str
-    net_provider: str
+    country_flag_url: str
+    latitude: str
+    longitude: str
     postal: str
-    region: str
-    hostname: str
     access_timestamp: int
     url_id: int
 

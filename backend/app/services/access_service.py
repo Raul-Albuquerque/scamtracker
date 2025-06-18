@@ -18,14 +18,15 @@ def generate_access_data(access: AccessCreate, db: Session) -> Access:
     try:
         access = Access(
             os=access.os,
-            platform=access.platform,
+            browser=access.browser,
+            ip=access.ip,
             city=access.city,
+            state=access.state,
             country=access.country,
-            location=access.location,
-            net_provider=access.net_provider,
+            country_flag_url=access.country_flag_url,
+            latitude=access.latitude,
+            longitude=access.longitude,
             postal=access.postal,
-            region=access.region,
-            hostname=access.hostname,
             access_timestamp=int(datetime.now(TIMEZONE).timestamp()),
             url_id=url.id,
         )
