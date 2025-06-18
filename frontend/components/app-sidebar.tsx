@@ -71,7 +71,7 @@ export function AppSidebar({
             <button
               key={item.key}
               onClick={() => setActiveItem(item.key)}
-              className={`flex items-center gap-2 p-2 rounded-md hover:bg-muted transition ${activeItem === item.key ? "bg-muted font-semibold" : ""
+              className={`flex items-center gap-2 p-2 text-sm rounded-md hover:bg-muted transition ${activeItem === item.key ? "bg-muted font-semibold" : ""
                 }`}
             >
               <item.icon className="h-4 w-4" />

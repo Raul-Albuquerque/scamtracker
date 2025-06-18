@@ -18,6 +18,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { SectionCards } from "@/components/section-cards"
 
 const DashboardPage = () => {
   const [activeItem, setActiveItem] = useState("overview")
@@ -44,8 +45,13 @@ const DashboardPage = () => {
           </div>
         </header>
         {activeItem === "overview" ? (
-          <div className="max-w-5xl mx-4">
-            <Chart />
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+              <SectionCards />
+            </div>
+            <div className="px-4 lg:px-6" >
+              <Chart />
+            </div>
           </div>
         ) : (
           <div className="max-w-5xl mx-4">
