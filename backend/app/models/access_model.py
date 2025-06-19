@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -14,8 +14,8 @@ class Access(Base):
     state = Column(String)
     country = Column(String)
     country_flag_url = Column(String)
-    latitude = Column(String)
-    longitude = Column(String)
+    latitude = Column(Float)
+    longitude = Column(Float)
     postal = Column(String)
     region = Column(String)
     access_timestamp = Column(Integer, nullable=False)

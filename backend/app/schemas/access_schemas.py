@@ -10,8 +10,8 @@ class AccessCreate(BaseModel):
     state: str
     country: str
     country_flag_url: str
-    latitude: str
-    longitude: str
+    latitude: float
+    longitude: float
     postal: str
     token: str
     access_timestamp: int
@@ -26,8 +26,8 @@ class AccessRead(BaseModel):
     state: str
     country: str
     country_flag_url: str
-    latitude: str
-    longitude: str
+    latitude: float
+    longitude: float
     postal: str
     access_timestamp: int
     url_id: int
