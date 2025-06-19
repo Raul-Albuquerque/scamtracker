@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 
 
-class UrlCreate(BaseModel):
+class UrlCreateSchema(BaseModel):
     owner_name: str
 
 
-class UrlRead(BaseModel):
+class UrlReadSchema(BaseModel):
     id: int
     token: str
     owner_name: str
@@ -17,7 +17,7 @@ class UrlRead(BaseModel):
     model_config = {"from_attributes": True}
 
 
-class UrlList(BaseModel):
-    urls: list[UrlRead]
+class UrlListSchema(BaseModel):
+    urls: list[UrlReadSchema]
 
     model_config = {"from_attributes": True}

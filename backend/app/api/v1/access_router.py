@@ -3,7 +3,11 @@ from sqlalchemy.orm import Session
 
 from app.models import Access, APIResponse, Url
 from app.database import get_db
-from app.schemas.access_schemas import AccessCreate, AccessList, AccessRead
+from app.schemas.access_schemas import (
+    AccessCreateSchema,
+    AccessListSchema,
+    AccessReadSchema,
+)
 from app.services.access_service import generate_access_data
 
 router = APIRouter()
@@ -13,7 +17,7 @@ router = APIRouter()
 def get_all_access(db: Session = Depends(get_db)):
     try:
         accesses = db.query(Access).all()
-        result = [AccessRead.model_validate(a) for a in accesses]
+        result = [AccessReadSchema.model_validate(a) for a in accesses]
         return APIResponse(
             count=len(result), data=result, message="Acessos recuperados com sucesso!"
         )
@@ -35,7 +39,7 @@ def get_all_url_access(token: str, db: Session = Depends(get_db)):
                 detail=f"Nenhum acesso encontrado para o token: {token}",
             )
 
-        result = [AccessRead.model_validate(a) for a in accesses]
+        result = [AccessReadSchema.model_validate(a) for a in accesses]
         return APIResponse(
             count=len(result),
             data=result,
@@ -49,7 +53,7 @@ def get_all_url_access(token: str, db: Session = Depends(get_db)):
 
 
 @router.post("/create", response_model=APIResponse)
-def create_access(access: AccessCreate, db: Session = Depends(get_db)):
+def create_access(access: AccessCreateSchema, db: Session = Depends(get_db)):
     try:
         access_data = generate_access_data(access=access, db=db)
         db.add(access_data)

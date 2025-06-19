@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class AccessCreate(BaseModel):
+class AccessCreateSchema(BaseModel):
     id: int
     os: str
     browser: str
@@ -9,6 +9,7 @@ class AccessCreate(BaseModel):
     city: str
     state: str
     country: str
+    country_code2: str
     country_flag_url: str
     latitude: float
     longitude: float
@@ -17,7 +18,7 @@ class AccessCreate(BaseModel):
     access_timestamp: int
 
 
-class AccessRead(BaseModel):
+class AccessReadSchema(BaseModel):
     id: int
     os: str
     browser: str
@@ -35,7 +36,7 @@ class AccessRead(BaseModel):
     model_config = {"from_attributes": True}
 
 
-class AccessList(BaseModel):
-    access_list: list[AccessRead]
+class AccessListSchema(BaseModel):
+    access_list: list[AccessReadSchema]
 
     model_config = {"from_attributes": True}

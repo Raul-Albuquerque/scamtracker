@@ -3,13 +3,16 @@ from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.models import Access, Url
-from app.schemas.access_schemas import AccessCreate
+from app.schemas.access_schemas import AccessCreateSchema
 from app.config import TIMEZONE
+from app.static_data.countries_dict import COUNTRIES_DICT
 
 
-def generate_access_data(access: AccessCreate, db: Session) -> Access:
+def generate_access_data(access: AccessCreateSchema, db: Session) -> Access:
 
     url = db.query(Url).filter_by(token=access.token).first()
+    country_code = access.country_code2
+    country_name_pt_br = COUNTRIES_DICT[country_code]
     if not url:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Token não encontrado."
@@ -22,7 +25,7 @@ def generate_access_data(access: AccessCreate, db: Session) -> Access:
             ip=access.ip,
             city=access.city,
             state=access.state,
-            country=access.country,
+            country=country_name_pt_br,
             country_flag_url=access.country_flag_url,
             latitude=access.latitude,
             longitude=access.longitude,
