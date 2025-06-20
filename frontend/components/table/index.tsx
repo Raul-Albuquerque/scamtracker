@@ -39,157 +39,168 @@ import {
 } from "@/components/ui/table"
 
 import { Access } from "@/types/access"
+import { DashboardDialog } from "@/app/dashboard/components/dialog"
 
 const data: Access[] = [
   {
-    "id": 1,
-    "os": "Windows 10",
-    "browser": "Chrome 125",
-    "ip": "192.168.1.10",
-    "city": "São Paulo",
-    "state": "SP",
-    "country": "Brazil",
-    "country_flag_url": "https://flagcdn.com/br.svg",
-    "latitude": "-23.5505",
-    "longitude": "-46.6333",
-    "postal": "01000-000",
-    "access_timestamp": 1717300000,
-    "url_id": 101
+    id: 1,
+    os: "Windows",
+    browser: "Chrome",
+    ip: "192.168.0.1",
+    city: "São Paulo",
+    state: "SP",
+    country: "Brasil",
+    country_flag_url: "https://flagcdn.com/br.svg",
+    country_emoji: "🇧🇷",
+    latitude: -23.5505,
+    longitude: -46.6333,
+    postal: "01000-000",
+    access_timestamp: 1718800000,
+    url_id: 101,
   },
   {
-    "id": 2,
-    "os": "macOS 13",
-    "browser": "Safari 16",
-    "ip": "192.168.1.11",
-    "city": "New York",
-    "state": "NY",
-    "country": "USA",
-    "country_flag_url": "https://flagcdn.com/us.svg",
-    "latitude": "40.7128",
-    "longitude": "-74.0060",
-    "postal": "10001",
-    "access_timestamp": 1717300500,
-    "url_id": 102
+    id: 2,
+    os: "macOS",
+    browser: "Safari",
+    ip: "203.0.113.2",
+    city: "Lisboa",
+    state: "Lisboa",
+    country: "Portugal",
+    country_flag_url: "https://flagcdn.com/pt.svg",
+    country_emoji: "🇵🇹",
+    latitude: 38.7169,
+    longitude: -9.1399,
+    postal: "1000-001",
+    access_timestamp: 1718800050,
+    url_id: 102,
   },
   {
-    "id": 3,
-    "os": "Ubuntu 22.04",
-    "browser": "Firefox 124",
-    "ip": "192.168.1.12",
-    "city": "Berlin",
-    "state": "BE",
-    "country": "Germany",
-    "country_flag_url": "https://flagcdn.com/de.svg",
-    "latitude": "52.5200",
-    "longitude": "13.4050",
-    "postal": "10115",
-    "access_timestamp": 1717301000,
-    "url_id": 103
+    id: 3,
+    os: "Linux",
+    browser: "Firefox",
+    ip: "198.51.100.3",
+    city: "Paris",
+    state: "Île-de-France",
+    country: "França",
+    country_flag_url: "https://flagcdn.com/fr.svg",
+    country_emoji: "🇫🇷",
+    latitude: 48.8566,
+    longitude: 2.3522,
+    postal: "75000",
+    access_timestamp: 1718800100,
+    url_id: 103,
   },
   {
-    "id": 4,
-    "os": "iOS 17",
-    "browser": "Safari Mobile",
-    "ip": "192.168.1.13",
-    "city": "Tokyo",
-    "state": "Tokyo",
-    "country": "Japan",
-    "country_flag_url": "https://flagcdn.com/jp.svg",
-    "latitude": "35.6895",
-    "longitude": "139.6917",
-    "postal": "100-0001",
-    "access_timestamp": 1717301500,
-    "url_id": 104
+    id: 4,
+    os: "Android",
+    browser: "Chrome",
+    ip: "203.0.113.4",
+    city: "Madrid",
+    state: "Madrid",
+    country: "Espanha",
+    country_flag_url: "https://flagcdn.com/es.svg",
+    country_emoji: "🇪🇸",
+    latitude: 40.4168,
+    longitude: -3.7038,
+    postal: "28001",
+    access_timestamp: 1718800200,
+    url_id: 104,
   },
   {
-    "id": 5,
-    "os": "Android 13",
-    "browser": "Chrome Mobile 124",
-    "ip": "192.168.1.14",
-    "city": "Sydney",
-    "state": "NSW",
-    "country": "Australia",
-    "country_flag_url": "https://flagcdn.com/au.svg",
-    "latitude": "-33.8688",
-    "longitude": "151.2093",
-    "postal": "2000",
-    "access_timestamp": 1717302000,
-    "url_id": 105
+    id: 5,
+    os: "iOS",
+    browser: "Safari",
+    ip: "192.0.2.5",
+    city: "Berlim",
+    state: "Berlim",
+    country: "Alemanha",
+    country_flag_url: "https://flagcdn.com/de.svg",
+    country_emoji: "🇩🇪",
+    latitude: 52.5200,
+    longitude: 13.4050,
+    postal: "10115",
+    access_timestamp: 1718800300,
+    url_id: 105,
   },
   {
-    "id": 6,
-    "os": "Windows 11",
-    "browser": "Edge 125",
-    "ip": "192.168.1.15",
-    "city": "Toronto",
-    "state": "ON",
-    "country": "Canada",
-    "country_flag_url": "https://flagcdn.com/ca.svg",
-    "latitude": "43.6510",
-    "longitude": "-79.3470",
-    "postal": "M5H",
-    "access_timestamp": 1717302500,
-    "url_id": 106
+    id: 6,
+    os: "Windows",
+    browser: "Edge",
+    ip: "198.51.100.6",
+    city: "Londres",
+    state: "Inglaterra",
+    country: "Reino Unido",
+    country_flag_url: "https://flagcdn.com/gb.svg",
+    country_emoji: "🇬🇧",
+    latitude: 51.5074,
+    longitude: -0.1278,
+    postal: "EC1A 1BB",
+    access_timestamp: 1718800400,
+    url_id: 106,
   },
   {
-    "id": 7,
-    "os": "Fedora 39",
-    "browser": "Firefox 123",
-    "ip": "192.168.1.16",
-    "city": "Paris",
-    "state": "Île-de-France",
-    "country": "France",
-    "country_flag_url": "https://flagcdn.com/fr.svg",
-    "latitude": "48.8566",
-    "longitude": "2.3522",
-    "postal": "75000",
-    "access_timestamp": 1717303000,
-    "url_id": 107
+    id: 7,
+    os: "macOS",
+    browser: "Firefox",
+    ip: "203.0.113.7",
+    city: "Nova York",
+    state: "NY",
+    country: "Estados Unidos",
+    country_flag_url: "https://flagcdn.com/us.svg",
+    country_emoji: "🇺🇸",
+    latitude: 40.7128,
+    longitude: -74.0060,
+    postal: "10001",
+    access_timestamp: 1718800500,
+    url_id: 107,
   },
   {
-    "id": 8,
-    "os": "macOS 14",
-    "browser": "Chrome 124",
-    "ip": "192.168.1.17",
-    "city": "Buenos Aires",
-    "state": "BA",
-    "country": "Argentina",
-    "country_flag_url": "https://flagcdn.com/ar.svg",
-    "latitude": "-34.6037",
-    "longitude": "-58.3816",
-    "postal": "C1000",
-    "access_timestamp": 1717303500,
-    "url_id": 108
+    id: 8,
+    os: "Linux",
+    browser: "Chrome",
+    ip: "198.51.100.8",
+    city: "Toronto",
+    state: "Ontário",
+    country: "Canadá",
+    country_flag_url: "https://flagcdn.com/ca.svg",
+    country_emoji: "🇨🇦",
+    latitude: 43.6510,
+    longitude: -79.3470,
+    postal: "M5H 2N2",
+    access_timestamp: 1718800600,
+    url_id: 108,
   },
   {
-    "id": 9,
-    "os": "Windows 10",
-    "browser": "Brave 124",
-    "ip": "192.168.1.18",
-    "city": "Cape Town",
-    "state": "WC",
-    "country": "South Africa",
-    "country_flag_url": "https://flagcdn.com/za.svg",
-    "latitude": "-33.9249",
-    "longitude": "18.4241",
-    "postal": "8000",
-    "access_timestamp": 1717304000,
-    "url_id": 109
+    id: 9,
+    os: "Android",
+    browser: "Edge",
+    ip: "203.0.113.9",
+    city: "Tóquio",
+    state: "Tóquio",
+    country: "Japão",
+    country_flag_url: "https://flagcdn.com/jp.svg",
+    country_emoji: "🇯🇵",
+    latitude: 35.6895,
+    longitude: 139.6917,
+    postal: "100-0001",
+    access_timestamp: 1718800700,
+    url_id: 109,
   },
   {
-    "id": 10,
-    "os": "Android 12",
-    "browser": "Opera Mobile",
-    "ip": "192.168.1.19",
-    "city": "Mumbai",
-    "state": "MH",
-    "country": "India",
-    "country_flag_url": "https://flagcdn.com/in.svg",
-    "latitude": "19.0760",
-    "longitude": "72.8777",
-    "postal": "400001",
-    "access_timestamp": 1717304500,
-    "url_id": 110
+    id: 10,
+    os: "iOS",
+    browser: "Safari",
+    ip: "192.0.2.10",
+    city: "Sydney",
+    state: "Nova Gales do Sul",
+    country: "Austrália",
+    country_flag_url: "https://flagcdn.com/au.svg",
+    country_emoji: "🇦🇺",
+    latitude: -33.8688,
+    longitude: 151.2093,
+    postal: "2000",
+    access_timestamp: 1718800800,
+    url_id: 110,
   }
 ]
 
@@ -207,18 +218,22 @@ export const columns: ColumnDef<Access>[] = [
         </Button>
       )
     },
+    cell: ({ row }) => {
+      const id = row.getValue("id") as number
+      return <span className="ms-4">{id}</span>
+    },
   },
   {
-    accessorKey: "os",
-    header: "SO",
+    accessorKey: "ip",
+    header: "IP",
   },
   {
     accessorKey: "browser",
     header: "Browser",
   },
   {
-    accessorKey: "ip",
-    header: "IP",
+    accessorKey: "os",
+    header: "SO",
   },
   {
     accessorKey: "city",
@@ -231,11 +246,14 @@ export const columns: ColumnDef<Access>[] = [
   {
     accessorKey: "country",
     header: "País",
+    cell: ({ row }) => {
+      const access = row.original
+      return (
+        <div>{access.country_emoji} {access.country}</div>
+      )
+    },
   },
-  {
-    accessorKey: "postal",
-    header: "CEP",
-  },
+
   {
     accessorKey: "access_timestamp",
     header: ({ column }) => {
@@ -251,18 +269,21 @@ export const columns: ColumnDef<Access>[] = [
     },
     cell: ({ row }) => {
       const rawTimestamp = row.getValue("access_timestamp")
-      const date = new Date(rawTimestamp as number * 1000)
-
-      const day = String(date.getDate()).padStart(2, "0")
-      const month = String(date.getMonth() + 1).padStart(2, "0")
-      const year = String(date.getFullYear()).slice(2)
-      const hour = String(date.getHours()).padStart(2, "0")
+      const date = new Date((rawTimestamp as number) * 1000)
+      const day = date.getDate()
+      const month = date.toLocaleString("pt-BR", { month: "short" })
+      const year = date.getFullYear()
+      let hours = date.getHours()
       const minutes = String(date.getMinutes()).padStart(2, "0")
+      const isPM = hours >= 12
+      hours = hours % 12 || 12
+      const period = isPM ? "pm" : "am"
 
-      const formatted = `${day}/${month}/${year} - ${hour}h:${minutes}m`
+      const formatted = `${day} ${month} ${year} - ${hours}:${minutes}${period}`
 
       return <div className="text-sm">{formatted}</div>
-    },
+    }
+
   },
   {
     id: "actions",
@@ -298,6 +319,7 @@ export function CustomTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const table = useReactTable({
     data,
@@ -335,16 +357,18 @@ export function CustomTable() {
               .getAllColumns()
               .filter((column) => column.getCanHide())
               .map((column) => {
+                const text = column.id === "access_timestamp" ? "Horário" : column.id
+                const className = column.id.length <= 2 ? "uppercase" : "capitalize";
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className="capitalize"
+                    className={className}
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) =>
                       column.toggleVisibility(!!value)
                     }
                   >
-                    {column.id}
+                    {text}
                   </DropdownMenuCheckboxItem>
                 )
               })}
@@ -395,6 +419,8 @@ export function CustomTable() {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  className="hover:bg-neutral-100 cursor-pointer"
+                  onClick={() => setIsDialogOpen(true)}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -445,6 +471,9 @@ export function CustomTable() {
           </Button>
         </div>
       </div>
+      <DashboardDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen} />
     </div>
   )
 }

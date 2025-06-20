@@ -7,8 +7,9 @@ export type Access = {
   "state": string,
   "country": string,
   "country_flag_url": string,
-  "latitude": string,
-  "longitude": string,
+  "country_emoji": string,
+  "latitude": number,
+  "longitude": number,
   "postal": string,
   "access_timestamp": number,
   "url_id": number
