@@ -5,15 +5,17 @@ class AccessCreateSchema(BaseModel):
     id: int
     os: str
     browser: str
+    device_vendor: str
+    device_model: str
     ip: str
     city: str
     state: str
     country: str
     country_code2: str
     country_flag_url: str
+    country_emoji: str
     latitude: float
     longitude: float
-    postal: str
     token: str
     access_timestamp: int
 
@@ -22,14 +24,16 @@ class AccessReadSchema(BaseModel):
     id: int
     os: str
     browser: str
+    device_vendor: str
+    device_model: str
     ip: str
     city: str
     state: str
     country: str
     country_flag_url: str
+    country_emoji: str
     latitude: float
     longitude: float
-    postal: str
     access_timestamp: int
     url_id: int
 

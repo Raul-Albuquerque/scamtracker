@@ -22,14 +22,17 @@ def generate_access_data(access: AccessCreateSchema, db: Session) -> Access:
         access = Access(
             os=access.os,
             browser=access.browser,
+            device_vendor=access.device_vendor,
+            device_model=access.device_model,
             ip=access.ip,
             city=access.city,
             state=access.state,
             country=country_name_pt_br,
+            country_code2=access.country_code2,
             country_flag_url=access.country_flag_url,
+            country_emoji=access.country_emoji,
             latitude=access.latitude,
             longitude=access.longitude,
-            postal=access.postal,
             access_timestamp=int(datetime.now(TIMEZONE).timestamp()),
             url_id=url.id,
         )
