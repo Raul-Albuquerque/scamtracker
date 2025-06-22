@@ -42,10 +42,10 @@ const chartData = [
   { date: "2025-06-07", desktop: 128, mobile: 298, tablet: 88 },
   { date: "2025-06-08", desktop: 145, mobile: 320, tablet: 92 },
   { date: "2025-06-09", desktop: 138, mobile: 310, tablet: 89 },
-  { date: "2025-06-10", desktop: 142, mobile: 325, tablet: 94 },
+  { date: "2025-06-10", desktop: 0, mobile: 0, tablet: 0 },
   { date: "2025-06-11", desktop: 150, mobile: 330, tablet: 99 },
   { date: "2025-06-12", desktop: 155, mobile: 340, tablet: 100 },
-  { date: "2025-06-13", desktop: 160, mobile: 345, tablet: 102 },
+  { date: "2025-06-13", desktop: 0, mobile: 0, tablet: 0 },
   { date: "2025-06-14", desktop: 158, mobile: 335, tablet: 101 },
   { date: "2025-06-15", desktop: 162, mobile: 350, tablet: 103 },
   { date: "2025-06-16", desktop: 168, mobile: 355, tablet: 105 },
@@ -78,7 +78,7 @@ export function Chart() {
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
-    const referenceDate = new Date("2025-06-18")
+    const referenceDate = new Date("2025-06-20")
     const startDate = new Date(referenceDate)
     startDate.setDate(startDate.getDate() - 7)
     return date >= startDate && date <= referenceDate
@@ -87,7 +87,7 @@ export function Chart() {
   return (
     <Card className="@container/card">
       <CardHeader>
-        <CardTitle>Total de Acessos</CardTitle>
+        <CardTitle>Acessos por dispositivos</CardTitle>
         <CardDescription>
           <span className="hidden @[540px]/card:block">
             Total dos últimos 7 dias
