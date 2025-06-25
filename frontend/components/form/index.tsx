@@ -20,7 +20,6 @@ export function Form({ onSubmitSuccess }: FormProps) {
       </div>
       <Button
         type="submit"
-        className="bg-orange-500 font-medium hover:bg-neutral-50 hover:text-orange-500"
       >
         Gerar token
       </Button>

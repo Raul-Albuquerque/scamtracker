@@ -12,19 +12,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Access } from "@/types/access"
 
 import { downloadCredencials } from "@/functions/downloadCredencials"
 import { Separator } from "../ui/separator"
+import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react"
+import Link from "next/link"
 
 interface FormDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
+export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -34,9 +41,17 @@ export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
           <DialogDescription>
             Cadastro realizado com sucesso!
           </DialogDescription>
+          <Alert variant="destructive">
+            <AlertCircleIcon />
+            <AlertTitle>As credenciais são exibidas apenas uma vez.</AlertTitle>
+            <AlertDescription>
+              <p>
+                Certifique-se de salvá-las em um local seguro — não será possível acessá-las novamente mais tarde.
+              </p>
+            </AlertDescription>
+          </Alert>
         </DialogHeader>
-        <Separator />
-        <div className="grid gap-4 py-2">
+        <div className="grid gap-4 mt-4">
           <div className="grid gap-2 text-sm">
             <h5 className="font-semibold text-neutral-700 mb-1">Credenciais</h5>
             <div className="grid grid-cols-2 justify-start gap-2 mt-3">
@@ -87,11 +102,10 @@ export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
             </div>
           </div>
         </div>
-        <Separator />
-        <DialogFooter className="sm:justify-start">
+        <DialogFooter className="sm:justify-start mt-4">
           <Button
             type="button"
-            variant={"default"}
+            // variant={"outline"}
             className="cursor-pointer"
             onClick={() => downloadCredencials({
               username: "raul",
@@ -101,12 +115,15 @@ export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
             })}>
             Baixar Credenciais
           </Button>
-          <Button
-            type="button"
-            className="bg-violet-700 text-neutral-50 hover:bg-neutral-50 hover:text-violet-500 hover:border hover:border-violet-500"
-          >
-            Acessar Painel
-          </Button>
+          <Link href={"/dashboard"}>
+            <Button
+              type="button"
+              variant={"outline"}
+              className="cursor-pointer"
+            >
+              Acessar Painel
+            </Button>
+          </Link>
         </DialogFooter>
       </DialogContent>
     </Dialog>

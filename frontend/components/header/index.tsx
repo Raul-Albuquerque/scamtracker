@@ -1,13 +1,19 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import { Button } from "../ui/button"
 import { Activity, AlignJustify, ChartColumnBig, Github, Home, SquareActivity } from "lucide-react"
 import { DialogContent, DialogTitle } from "@radix-ui/react-dialog"
+import { LoginDialog } from "../loginDialog"
 
 
 export function Header() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <div className="bg-neutral-900">
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
@@ -47,10 +53,13 @@ export function Header() {
                   <span className="">Repositório do Projeto</span>
                 </Link>
                 <Link
-                  href={"/dashboard"}
+                  href={""}
                   className="mx-4 text-center"
                 >
-                  <Button className="bg-violet-700 text-neutral-50 hover:bg-neutral-50 hover:text-violet-500 max-w-80 px-20 cursor-pointer py-6 text-base">
+                  <Button
+                    className="bg-violet-700 text-neutral-50 hover:bg-neutral-50 hover:text-violet-500 max-w-80 px-20 cursor-pointer py-6 text-base"
+                    onClick={() => setIsDialogOpen(true)}
+                  >
                     Acessar Painel
                   </Button>
                 </Link>
@@ -68,15 +77,19 @@ export function Header() {
             <span className="sr-only">Repositório Github</span>
           </Link>
           <Link
-            href={"/dashboard"}
+            href={""}
             className="text-muted-foreground hover:text-foreground"
           >
-            <Button className="bg-violet-700 text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-violet-500 cursor-pointer">
+            <Button
+              className="bg-violet-700 text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-violet-500 cursor-pointer"
+              onClick={() => setIsDialogOpen(true)}
+            >
               Acessar Painel
             </Button>
           </Link>
         </div>
       </header>
+      <LoginDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>
   )
 }

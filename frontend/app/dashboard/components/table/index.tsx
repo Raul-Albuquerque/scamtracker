@@ -39,7 +39,7 @@ import {
 } from "@/components/ui/table"
 
 import { Access } from "@/types/access"
-import { DashboardDialog } from "@/app/dashboard/components/dialog"
+import { DashboardDialog } from "@/app/dashboard/components/dashboardDialog"
 
 const data: Access[] = [
   {
