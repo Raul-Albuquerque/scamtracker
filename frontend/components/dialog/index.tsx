@@ -91,6 +91,8 @@ export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
         <DialogFooter className="sm:justify-start">
           <Button
             type="button"
+            variant={"default"}
+            className="cursor-pointer"
             onClick={() => downloadCredencials({
               username: "raul",
               token: "jasjdakdh728",
@@ -98,6 +100,12 @@ export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
               url_param: "?target=jasjdakdh728"
             })}>
             Baixar Credenciais
+          </Button>
+          <Button
+            type="button"
+            className="bg-violet-700 text-neutral-50 hover:bg-neutral-50 hover:text-violet-500 hover:border hover:border-violet-500"
+          >
+            Acessar Painel
           </Button>
         </DialogFooter>
       </DialogContent>

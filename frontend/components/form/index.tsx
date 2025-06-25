@@ -18,7 +18,12 @@ export function Form({ onSubmitSuccess }: FormProps) {
         <Label htmlFor="email">Username:</Label>
         <Input type="email" id="username" placeholder="Digite seu username" className="border border-neutral-400" />
       </div>
-      <Button type="submit">Gerar token</Button>
+      <Button
+        type="submit"
+        className="bg-orange-500 font-medium hover:bg-neutral-50 hover:text-orange-500"
+      >
+        Gerar token
+      </Button>
     </form>
   )
 }

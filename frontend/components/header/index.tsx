@@ -50,7 +50,7 @@ export function Header() {
                   href={"/dashboard"}
                   className="mx-4 text-center"
                 >
-                  <Button className="bg-neutral-950 text-neutral-50 hover:bg-neutral-400 hover:text-neutral-800 max-w-80 px-20 cursor-pointer py-6 text-base">
+                  <Button className="bg-violet-700 text-neutral-50 hover:bg-neutral-50 hover:text-violet-500 max-w-80 px-20 cursor-pointer py-6 text-base">
                     Acessar Painel
                   </Button>
                 </Link>
@@ -64,14 +64,14 @@ export function Header() {
             href={"https://github.com/Raul-Albuquerque/scamtracker"}
             className="flex justify-start items-center gap-5 text-muted-foreground hover:text-foreground"
           >
-            <Github size="icon" className="w-5 h-5 text-neutral-100 hover:text-red-500" />
+            <Github size="icon" className="w-5 h-5 text-neutral-100 hover:text-violet-500" />
             <span className="sr-only">Repositório Github</span>
           </Link>
           <Link
             href={"/dashboard"}
             className="text-muted-foreground hover:text-foreground"
           >
-            <Button className="bg-neutral-50 text-neutral-950 hover:bg-neutral-800 hover:text-neutral-50 cursor-pointer">
+            <Button className="bg-violet-700 text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-violet-500 cursor-pointer">
               Acessar Painel
             </Button>
           </Link>

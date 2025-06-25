@@ -131,36 +131,36 @@ export function Chart() {
                   <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">
                     <stop
                       offset="5%"
-                      stopColor="var(--chart-1)"
+                      stopColor="var(--chart-2)"
                       stopOpacity={1.0}
                     />
                     <stop
                       offset="95%"
-                      stopColor="var(--chart-1)"
+                      stopColor="var(--chart-2)"
                       stopOpacity={0.1}
                     />
                   </linearGradient>
                   <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
                     <stop
                       offset="5%"
-                      stopColor="var(--chart-2)"
+                      stopColor="var(--chart-4)"
                       stopOpacity={0.8}
                     />
                     <stop
                       offset="95%"
-                      stopColor="var(--chart-2)"
+                      stopColor="var(--chart-4)"
                       stopOpacity={0.1}
                     />
                   </linearGradient>
                   <linearGradient id="fillTablet" x1="0" y1="0" x2="0" y2="1">
                     <stop
                       offset="5%"
-                      stopColor="var(--chart-5)"
+                      stopColor="var(--chart-6)"
                       stopOpacity={0.8}
                     />
                     <stop
                       offset="95%"
-                      stopColor="var(--chart-5)"
+                      stopColor="var(--chart-6)"
                       stopOpacity={0.1}
                     />
                   </linearGradient>
@@ -200,21 +200,21 @@ export function Chart() {
                   dataKey="mobile"
                   type="natural"
                   fill="url(#fillMobile)"
-                  stroke="var(--chart-2)"
+                  stroke="var(--chart-4)"
                   stackId="a"
                 />
                 <Area
                   dataKey="desktop"
                   type="natural"
                   fill="url(#fillDesktop)"
-                  stroke="var(--chart-1)"
+                  stroke="var(--chart-2)"
                   stackId="a"
                 />
                 <Area
                   dataKey="tablet"
                   type="natural"
                   fill="url(#fillTablet)"
-                  stroke="var(--chart-5)"
+                  stroke="var(--chart-6)"
                   stackId="a"
                 />
               </AreaChart>

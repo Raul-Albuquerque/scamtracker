@@ -61,7 +61,7 @@ export function AppSidebar({
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <Link href={"/dashboard"} className="py-4 mx-2">
+        <Link href={"/"} className="py-4 mx-2">
           <Image src={"/static/images/logo-black.svg"} alt="Scamtracker logo" width={120} height={24} />
         </Link>
       </SidebarHeader>
