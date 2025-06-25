@@ -1,5 +1,5 @@
 import string
-from datetime import datetime
+from datetime import datetime, timedelta
 from fastapi import HTTPException, status
 from nanoid import generate
 from sqlalchemy.orm import Session
@@ -25,7 +25,7 @@ def generate_unique_token(db: Session, size: int) -> str:
             return token
 
 
-def generate_url_data(db: Session, owner_name: str) -> Url:
+def generate_url_data(db: Session, username: str) -> Url:
     token = generate_unique_token(db=db, size=8)
     creation_date = int(datetime.now(TIMEZONE).timestamp())
     expiration_date = creation_date + (3600 * 24 * 30)
@@ -35,7 +35,7 @@ def generate_url_data(db: Session, owner_name: str) -> Url:
     try:
         url = Url(
             token=token,
-            owner_name=owner_name,
+            username=username,
             shortened_url=shortened_url,
             original_url=original_url,
             creation_date=creation_date,

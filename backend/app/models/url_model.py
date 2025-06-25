@@ -8,7 +8,7 @@ class Url(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     token = Column(String, nullable=False, unique=True, index=True)
-    owner_name = Column(String, nullable=False, index=True)
+    username = Column(String, nullable=False, index=True)
     shortened_url = Column(String, nullable=False)
     original_url = Column(String, nullable=False)
     creation_date = Column(Integer, nullable=False)

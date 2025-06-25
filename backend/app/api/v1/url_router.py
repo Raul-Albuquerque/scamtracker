@@ -6,7 +6,7 @@ from app.database import get_db
 from app.schemas.url_schemas import UrlCreateSchema, UrlListSchema, UrlReadSchema
 from app.services.url_service import generate_url_data
 
-router = APIRouter()
+router = APIRouter(tags=["url"])
 
 
 @router.get("/all", response_model=APIResponse)
@@ -45,7 +45,7 @@ def get_url_from_token(token: str, db: Session = Depends(get_db)):
 @router.post("/create", response_model=APIResponse)
 def create_url(url: UrlCreateSchema, db: Session = Depends(get_db)):
     try:
-        url_data = generate_url_data(db=db, owner_name=url.owner_name)
+        url_data = generate_url_data(db=db, username=url.username)
         db.add(url_data)
         db.commit()
         db.refresh(url_data)
