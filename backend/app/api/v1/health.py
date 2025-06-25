@@ -3,7 +3,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from app.database import get_db
 
-health_router = APIRouter()
+health_router = APIRouter(tags=["health"])
 
 
 @health_router.get("/health", status_code=status.HTTP_200_OK)

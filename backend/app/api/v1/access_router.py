@@ -10,7 +10,7 @@ from app.schemas.access_schemas import (
 )
 from app.services.access_service import generate_access_data
 
-router = APIRouter()
+router = APIRouter(tags=["access"])
 
 
 @router.get("/all", response_model=APIResponse)

@@ -2,13 +2,13 @@ from pydantic import BaseModel
 
 
 class UrlCreateSchema(BaseModel):
-    owner_name: str
+    username: str
 
 
 class UrlReadSchema(BaseModel):
     id: int
     token: str
-    owner_name: str
+    username: str
     shortened_url: str
     original_url: str
     creation_date: int
