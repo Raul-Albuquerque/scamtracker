@@ -2,12 +2,11 @@
 
 import { useState } from "react"
 import { AppSidebar } from "@/components/app-sidebar"
-import { Chart } from "@/components/chart"
-import { CustomTable } from "@/components/table"
+import { Chart } from "@/app/dashboard/components/chart"
+import { CustomTable } from "@/app/dashboard/components/table"
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,

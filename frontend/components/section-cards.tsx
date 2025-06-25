@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { ChartPieLegend } from "./pieChart"
 
 export function SectionCards() {
   return (
