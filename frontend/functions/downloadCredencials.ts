@@ -3,10 +3,10 @@ import { Credencials } from "@/types/credencials";
 
 export function downloadCredencials({ username, token, url, url_param }: Credencials) {
   const content = `
-      Username: ${username}
-      Token: ${token}
-      URL de acesso: ${url}
-      URL Param: ${url_param}
+    Username: ${username}
+    Token: ${token}
+    URL de acesso: ${url}
+    URL Param: ${url_param}
 
       🛑 Atenção: este token será exibido apenas uma vez.
       Salve este arquivo em um local seguro. Você precisará dele para acessar seu dashboard.

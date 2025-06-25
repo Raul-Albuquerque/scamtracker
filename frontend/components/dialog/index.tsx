@@ -19,13 +19,15 @@ import { Access } from "@/types/access"
 import { downloadCredencials } from "@/functions/downloadCredencials"
 import { Separator } from "../ui/separator"
 
-export function HomeDialog() {
+interface FormDialogProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+export function HomeDialog({ open, onOpenChange }: FormDialogProps) {
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>Gerar Token</Button>
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastro</DialogTitle>

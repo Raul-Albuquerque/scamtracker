@@ -17,8 +17,8 @@ import { Separator } from "@/components/ui/separator"
 
 
 interface ItemDialogProps {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  open: boolean
+  onOpenChange: (open: boolean) => void
 }
 
 export function DashboardDialog({ open, onOpenChange }: ItemDialogProps) {
