@@ -23,8 +23,9 @@ import { Access } from "@/types/access"
 
 import { downloadCredencials } from "@/functions/downloadCredencials"
 import { Separator } from "../ui/separator"
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react"
+import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 
 interface FormDialogProps {
   open: boolean
@@ -32,7 +33,7 @@ interface FormDialogProps {
 }
 
 export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
-
+  const [showToken, setShowToken] = useState(false);
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -56,7 +57,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
             <h5 className="font-semibold text-neutral-700 mb-1">Credenciais</h5>
             <div className="grid grid-cols-2 justify-start gap-2 mt-3">
               <div>
-                <Label htmlFor="username" className="text-neutral-500">
+                <Label htmlFor="username" className="text-neutral-500 mb-2">
                   Username:
                 </Label>
                 <Input
@@ -67,16 +68,43 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                 />
               </div>
               <div>
-                <Label htmlFor="token" className="text-neutral-500">
+                <Label htmlFor="token" className="text-neutral-500 mb-2 block">
                   Token:
                 </Label>
-                <Input
-                  id="token"
-                  className="text-neutral-600 font-medium"
-                  defaultValue="jasjdakdh728"
-                  readOnly
-                />
+                <div className="relative">
+                  <Input
+                    id="token"
+                    type={showToken ? "text" : "password"}
+                    className="text-neutral-600 font-medium pr-10"
+                    defaultValue="jasjdakdh728"
+                    readOnly
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowToken(!showToken)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700 cursor-pointer"
+                    aria-label={showToken ? "Esconder token" : "Mostrar token"}
+                  >
+                    {showToken ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
               </div>
+            </div>
+            <div className="grid grid-cols-1 justify-start gap-2 mt-2">
+              <Label className="text-neutral-500">
+                Layout demo:
+              </Label>
+              <Select>
+                <SelectTrigger className="w-100">
+                  <SelectValue placeholder="Selecione o Layout Demo" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="inter">Banco Inter</SelectItem>
+                  <SelectItem value="nubank">Nubank</SelectItem>
+                  <SelectItem value="bradesco">Bradesco</SelectItem>
+                  <SelectItem value="caixa">Caixa</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="grid grid-cols-1 justify-start gap-2 mt-2">
               <Label htmlFor="url" className="text-neutral-500">
@@ -85,7 +113,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               <Input
                 id="url"
                 className="text-neutral-600 font-medium"
-                defaultValue="https://dominio.com/content?target=jasjdakdh728"
+                defaultValue="https://dominio.com/demo?page=inter&target=jasjdakdh728"
                 readOnly
               />
             </div>
