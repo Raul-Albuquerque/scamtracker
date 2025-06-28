@@ -26,6 +26,8 @@ import { Separator } from "../ui/separator"
 import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Checkbox } from "../ui/checkbox"
+import { banks } from "@/constants/banks"
 
 interface FormDialogProps {
   open: boolean
@@ -33,7 +35,11 @@ interface FormDialogProps {
 }
 
 export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
-  const [showToken, setShowToken] = useState(false);
+  const [showToken, setShowToken] = useState(false)
+  const [selectedBank, setSelectedBank] = useState("inter")
+  const [isTermChecked, setIsTermChecked] = useState(true)
+  const bankList = Object.entries(banks)
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -62,7 +68,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                 </Label>
                 <Input
                   id="username"
-                  className="text-neutral-600 font-medium"
+                  className="text-neutral-600 font-medium text-sm"
                   defaultValue="raul"
                   readOnly
                 />
@@ -75,7 +81,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                   <Input
                     id="token"
                     type={showToken ? "text" : "password"}
-                    className="text-neutral-600 font-medium pr-10"
+                    className="text-neutral-600 font-medium pr-10 text-sm"
                     defaultValue="jasjdakdh728"
                     readOnly
                   />
@@ -94,15 +100,14 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               <Label className="text-neutral-500">
                 Layout demo:
               </Label>
-              <Select>
-                <SelectTrigger className="w-100">
+              <Select value={selectedBank} onValueChange={(value) => setSelectedBank(value)}>
+                <SelectTrigger className="md:w-100">
                   <SelectValue placeholder="Selecione o Layout Demo" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="inter">Banco Inter</SelectItem>
-                  <SelectItem value="nubank">Nubank</SelectItem>
-                  <SelectItem value="bradesco">Bradesco</SelectItem>
-                  <SelectItem value="caixa">Caixa</SelectItem>
+                  {bankList.map(([key, bank]) => (
+                    <SelectItem className="capitalize" key={key} value={bank.name}>{bank.name}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
@@ -112,8 +117,8 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               </Label>
               <Input
                 id="url"
-                className="text-neutral-600 font-medium"
-                defaultValue="https://dominio.com/demo?page=inter&target=jasjdakdh728"
+                className="text-neutral-600 font-medium text-sm"
+                value={`https://dominio.com/demo?page=${selectedBank}&target=jasjdakdh728`}
                 readOnly
               />
             </div>
@@ -123,35 +128,47 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               </Label>
               <Input
                 id="urlParam"
-                className="text-neutral-600 font-medium"
+                className="text-neutral-600 font-medium text-sm"
                 defaultValue="?target=jasjdakdh728"
                 readOnly
               />
+            </div>
+            <div className="flex items-center gap-2 mt-5">
+              <Checkbox
+                id="terms-2"
+                className="border-neutral-400"
+                onCheckedChange={(checked) => checked == true ? setIsTermChecked(false) : setIsTermChecked(true)}
+              />
+              <Label htmlFor="terms-2" className="gap-1">
+                <span className="text-neutral-500">Aceito os</span>
+                <Link href={"/terms"} target="_blank" className="text-blue-500 font-semibold hover:text-neutral-700 text-sm">
+                  Termos de Uso
+                </Link>
+              </Label>
             </div>
           </div>
         </div>
         <DialogFooter className="sm:justify-start mt-4">
           <Button
             type="button"
-            // variant={"outline"}
             className="cursor-pointer"
+            disabled={isTermChecked}
             onClick={() => downloadCredencials({
               username: "raul",
               token: "jasjdakdh728",
-              url: "https://dominio.com/content?target=jasjdakdh728",
+              url: `https://dominio.com/demo=${selectedBank}?page=&target=jasjdakdh728`,
               url_param: "?target=jasjdakdh728"
             })}>
             Baixar Credenciais
           </Button>
-          <Link href={"/dashboard"}>
-            <Button
-              type="button"
-              variant={"outline"}
-              className="cursor-pointer"
-            >
-              Acessar Painel
-            </Button>
-          </Link>
+          <Button
+            type="button"
+            variant={"outline"}
+            className="cursor-pointer"
+            disabled={isTermChecked}
+          >
+            <Link href={"/dashboard"}>Acessar Painel</Link>
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

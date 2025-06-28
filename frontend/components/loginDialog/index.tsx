@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -11,6 +13,8 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useState } from "react"
+import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon, Eye, EyeOff } from "lucide-react"
 
 interface FormDialogProps {
   open: boolean
@@ -18,6 +22,7 @@ interface FormDialogProps {
 }
 
 export function LoginDialog({ open, onOpenChange }: FormDialogProps) {
+  const [showToken, setShowToken] = useState(false);
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <form>
@@ -39,11 +44,22 @@ export function LoginDialog({ open, onOpenChange }: FormDialogProps) {
             </div>
             <div className="grid gap-3">
               <Label htmlFor="token">Token</Label>
-              <Input
-                id="token"
-                name="token"
-                placeholder="Seu token"
-              />
+              <div className="relative">
+                <Input
+                  id="token"
+                  name="token"
+                  type={showToken ? "text" : "password"}
+                  placeholder="Seu token"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowToken(!showToken)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-700 cursor-pointer"
+                  aria-label={showToken ? "Esconder token" : "Mostrar token"}
+                >
+                  {showToken ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
           </div>
           <DialogFooter>
