@@ -6,7 +6,7 @@ import { useState } from "react"
 
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import { Button } from "../ui/button"
-import { Activity, AlignJustify, ChartColumnBig, Github, Home, SquareActivity } from "lucide-react"
+import { Activity, AlignJustify, BookAlert, ChartColumnBig, Github, Home, SquareActivity } from "lucide-react"
 import { DialogContent, DialogTitle } from "@radix-ui/react-dialog"
 import { LoginDialog } from "../loginDialog"
 
@@ -53,6 +53,13 @@ export function Header() {
                   <span className="">Repositório do Projeto</span>
                 </Link>
                 <Link
+                  href={"https://github.com/Raul-Albuquerque/scamtracker"}
+                  className="flex mx-4 justify-start items-center gap-2 text-muted-foreground hover:text-foreground"
+                >
+                  <BookAlert size="icon" className="w-6 h-6" />
+                  <span className="">Termos de Uso</span>
+                </Link>
+                <Link
                   href={""}
                   className="mx-4 text-center"
                 >
@@ -70,6 +77,12 @@ export function Header() {
 
         <div className="hidden sm:flex items-center justify-end gap-5">
           <Link
+            href={"/terms"}
+            className="flex justify-start items-center gap-5 text-muted-foreground hover:text-foreground"
+          >
+            <span className="text-sm font-medium text-neutral-100 hover:text-violet-500">Termos de Uso</span>
+          </Link>
+          <Link
             href={"https://github.com/Raul-Albuquerque/scamtracker"}
             className="flex justify-start items-center gap-5 text-muted-foreground hover:text-foreground"
           >
@@ -81,7 +94,7 @@ export function Header() {
             className="text-muted-foreground hover:text-foreground"
           >
             <Button
-              className="bg-violet-700 text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-violet-500 cursor-pointer"
+              className=" bg-neutral-50 text-neutral-700 font-medium hover:bg-violet-700 hover:text-neutral-50 cursor-pointer"
               onClick={() => setIsDialogOpen(true)}
             >
               Acessar Painel
