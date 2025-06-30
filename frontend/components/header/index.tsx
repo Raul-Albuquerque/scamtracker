@@ -15,10 +15,10 @@ export function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
-    <div className="bg-neutral-900">
+    <div className="bg-transparent">
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
         <Link href={"/"}>
-          <Image src={"/static/images/logo.svg"} alt="Scamtracker logo" width={160} height={24} />
+          <Image src={"/static/images/logo-black.svg"} alt="Scamtracker logo" width={160} height={24} />
         </Link>
 
         <div className="sm:hidden">

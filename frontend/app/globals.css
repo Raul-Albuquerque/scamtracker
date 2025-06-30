@@ -122,3 +122,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+.bubble {
+  position: absolute;
+  top: 0;
+  right: -2%;
+  width: 1008px;
+  height: 831px;
+  background-image: url('/static/images/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.bubble::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/static/images/bubble.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.detail-left {
+  position: absolute;
+  width: 292px;
+  height: 831px;
+  left: 0;
+  bottom: 0;
+  background-image: url('/static/images/bg-detail-l.webp');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.logo-hero-detail {
+  position: absolute;
+  right: 800px;
+  top: 500px;
+  background-color: #fff;
+}
