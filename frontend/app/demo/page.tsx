@@ -1,7 +1,7 @@
-import { Separator } from "@/components/ui/separator"
-import { Facebook, Instagram, Linkedin, Twitter, X, Youtube } from "lucide-react"
 import Image from "next/image"
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 
+import { Separator } from "@/components/ui/separator"
 import { banks } from "@/constants/banks"
 
 export default function DemoPage() {

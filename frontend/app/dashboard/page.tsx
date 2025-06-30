@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+
 import { AppSidebar } from "@/components/app-sidebar"
 import { Chart } from "@/app/dashboard/components/chart"
 import { CustomTable } from "@/app/dashboard/components/table"

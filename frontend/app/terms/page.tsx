@@ -1,4 +1,4 @@
-import { Header } from "@/components/header";
+import { Header } from "@/components/header"
 
 export default function TermsPage() {
 
@@ -90,7 +90,7 @@ export default function TermsPage() {
             5. Limitação de Garantia
           </h2>
           <p className="mt-2">
-            Este projeto é fornecido "no estado em que se encontra" e não há
+            Este projeto é fornecido &quotno estado em que se encontra&quot; e não há
             garantias de disponibilidade, estabilidade ou precisão dos dados fornecidos.
           </p>
         </section>

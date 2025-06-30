@@ -1,8 +1,10 @@
 "use client"
-import { useEffect, useState } from "react";
-import { DisclaimerDialog } from "@/components/disclaimerDialog";
-import { Header } from "@/components/header";
-import { Hero } from "@/components/hero";
+
+import { useEffect, useState } from "react"
+
+import { DisclaimerDialog } from "@/components/disclaimerDialog"
+import { Header } from "@/components/header"
+import { Hero } from "@/components/hero"
 
 export default function Home() {
   const [showDisclaimer, setShowDisclaimer] = useState(false)
@@ -19,5 +21,5 @@ export default function Home() {
       </div >
       <DisclaimerDialog open={showDisclaimer} onOpenChange={setShowDisclaimer} />
     </>
-  );
+  )
 }

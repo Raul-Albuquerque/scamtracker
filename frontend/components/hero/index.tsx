@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react";
-import { Form } from "../form"
-import { TokenDialog } from "../tokenDialog"
-import Image from "next/image";
-import { Quicksand } from 'next/font/google'
+import { useState } from "react"
+import Image from "next/image"
+import { Quicksand } from "next/font/google"
+import { TokenDialog } from "@/components/tokenDialog"
+import { Form } from "@/components/form"
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -12,7 +12,7 @@ const quicksand = Quicksand({
 })
 
 export function Hero() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleFormSuccess = () => {
     setIsDialogOpen(true)

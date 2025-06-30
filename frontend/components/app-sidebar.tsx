@@ -2,22 +2,12 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
   ChartColumnBig,
   SquareActivity
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
@@ -26,13 +16,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
 
-type NavItem = {
-  key: string,
-  title: string,
-  icon: any
-}
 
 type AppSidebarProps = {
   activeItem: string

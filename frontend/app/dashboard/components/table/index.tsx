@@ -16,19 +16,15 @@ import {
 import { ArrowUpDown, ChevronDown, MoreHorizontal, Eye } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import {
   Table,
   TableBody,
@@ -288,8 +284,7 @@ export const columns: ColumnDef<Access>[] = [
   {
     id: "actions",
     enableHiding: false,
-    cell: ({ row }) => {
-      const access = row.original
+    cell: () => {
 
       return (
         <DropdownMenu>
@@ -319,7 +314,7 @@ export function CustomTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
-  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false)
 
   const table = useReactTable({
     data,
@@ -358,7 +353,7 @@ export function CustomTable() {
               .filter((column) => column.getCanHide())
               .map((column) => {
                 const text = column.id === "access_timestamp" ? "Horário" : column.id
-                const className = column.id.length <= 2 ? "uppercase" : "capitalize";
+                const className = column.id.length <= 2 ? "uppercase" : "capitalize"
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
