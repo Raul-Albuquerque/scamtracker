@@ -1,18 +1,18 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { AlignJustify, BookAlert, Github, Home } from "lucide-react"
 
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
-import { Button } from "../ui/button"
-import { Activity, AlignJustify, BookAlert, ChartColumnBig, Github, Home, SquareActivity } from "lucide-react"
-import { DialogContent, DialogTitle } from "@radix-ui/react-dialog"
-import { LoginDialog } from "../loginDialog"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
+import { DialogTitle } from "@/components/ui/dialog"
+import { LoginDialog } from "@/components/loginDialog"
 
 
 export function Header() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   return (
     <div className="bg-transparent">

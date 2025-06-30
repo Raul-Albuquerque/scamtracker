@@ -18,7 +18,7 @@ export function GoogleMaps({ lat, lng }: GoogleMapsProps) {
   const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID
 
   if (!apiKey) {
-    throw new Error("API key is missing. Check environment variables.");
+    throw new Error("API key is missing. Check environment variables.")
   }
 
   return (

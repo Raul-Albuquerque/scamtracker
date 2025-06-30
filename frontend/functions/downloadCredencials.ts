@@ -1,5 +1,5 @@
 
-import { Credencials } from "@/types/credencials";
+import { Credencials } from "@/types/credencials"
 
 export function downloadCredencials({ username, token, url, url_param }: Credencials) {
   const content = `

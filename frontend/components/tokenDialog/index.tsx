@@ -1,16 +1,17 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { Eye, EyeOff, AlertCircleIcon } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import {
   Alert,
@@ -19,14 +20,9 @@ import {
 } from "@/components/ui/alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Access } from "@/types/access"
-
 import { downloadCredencials } from "@/functions/downloadCredencials"
-import { Separator } from "../ui/separator"
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon, Eye, EyeOff } from "lucide-react"
-import Link from "next/link"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-import { Checkbox } from "../ui/checkbox"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 import { banks } from "@/constants/banks"
 
 interface FormDialogProps {

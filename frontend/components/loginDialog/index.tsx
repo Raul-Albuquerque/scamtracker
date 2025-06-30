@@ -1,5 +1,8 @@
 "use client"
 
+import { useState } from "react"
+import { Eye, EyeOff } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -9,12 +12,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from "react"
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon, Eye, EyeOff } from "lucide-react"
 
 interface FormDialogProps {
   open: boolean
@@ -22,7 +22,7 @@ interface FormDialogProps {
 }
 
 export function LoginDialog({ open, onOpenChange }: FormDialogProps) {
-  const [showToken, setShowToken] = useState(false);
+  const [showToken, setShowToken] = useState(false)
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <form>
