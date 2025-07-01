@@ -13,17 +13,18 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { downloadCredencials } from "@/functions/downloadCredencials"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { banks } from "@/constants/banks"
+import { downloadCredencials } from "@/functions/downloadCredencials"
 
 interface FormDialogProps {
   open: boolean
@@ -33,7 +34,7 @@ interface FormDialogProps {
 export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
   const [showToken, setShowToken] = useState(false)
   const [selectedBank, setSelectedBank] = useState("inter")
-  const [isTermChecked, setIsTermChecked] = useState(true)
+  const [isCredencialsSaved, setIsCredencialsSaved] = useState(false)
   const bankList = Object.entries(banks)
 
   return (
@@ -41,15 +42,14 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastro</DialogTitle>
-          <DialogDescription>
-            Cadastro realizado com sucesso!
-          </DialogDescription>
+          <DialogDescription>Cadastro realizado com sucesso!</DialogDescription>
           <Alert variant="destructive">
             <AlertCircleIcon />
             <AlertTitle>As credenciais são exibidas apenas uma vez.</AlertTitle>
             <AlertDescription>
               <p>
-                Certifique-se de salvá-las em um local seguro — não será possível acessá-las novamente mais tarde.
+                Certifique-se de salvá-las em um local seguro — não será
+                possível acessá-las novamente mais tarde.
               </p>
             </AlertDescription>
           </Alert>
@@ -93,16 +93,23 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               </div>
             </div>
             <div className="grid grid-cols-1 justify-start gap-2 mt-2">
-              <Label className="text-neutral-500">
-                Layout demo:
-              </Label>
-              <Select value={selectedBank} onValueChange={(value) => setSelectedBank(value)}>
-                <SelectTrigger className="md:w-100">
+              <Label className="text-neutral-500">Layout da página demo:</Label>
+              <Select
+                value={selectedBank}
+                onValueChange={(value) => setSelectedBank(value)}
+              >
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="Selecione o Layout Demo" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="capitalize">
                   {bankList.map(([key, bank]) => (
-                    <SelectItem className="capitalize" key={key} value={bank.name}>{bank.name}</SelectItem>
+                    <SelectItem
+                      className="capitalize"
+                      key={key}
+                      value={bank.name}
+                    >
+                      {`Banco ${bank.name}`}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -129,39 +136,29 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                 readOnly
               />
             </div>
-            <div className="flex items-center gap-2 mt-5">
-              <Checkbox
-                id="terms-2"
-                className="border-neutral-400"
-                onCheckedChange={(checked) => checked == true ? setIsTermChecked(false) : setIsTermChecked(true)}
-              />
-              <Label htmlFor="terms-2" className="gap-1">
-                <span className="text-neutral-500">Aceito os</span>
-                <Link href={"/terms"} target="_blank" className="text-blue-500 font-semibold hover:text-neutral-700 text-sm">
-                  Termos de Uso
-                </Link>
-              </Label>
-            </div>
           </div>
         </div>
         <DialogFooter className="sm:justify-start mt-4">
           <Button
             type="button"
             className="cursor-pointer"
-            disabled={isTermChecked}
-            onClick={() => downloadCredencials({
-              username: "raul",
-              token: "jasjdakdh728",
-              url: `https://dominio.com/demo=${selectedBank}?page=&target=jasjdakdh728`,
-              url_param: "?target=jasjdakdh728"
-            })}>
+            onClick={() => {
+              setIsCredencialsSaved(true)
+              downloadCredencials({
+                username: "raul",
+                token: "jasjdakdh728",
+                url: `https://dominio.com/demo=${selectedBank}?page=&target=jasjdakdh728`,
+                url_param: "?target=jasjdakdh728",
+              })
+            }}
+          >
             Baixar Credenciais
           </Button>
           <Button
             type="button"
             variant={"outline"}
             className="cursor-pointer"
-            disabled={isTermChecked}
+            disabled={!isCredencialsSaved}
           >
             <Link href={"/dashboard"}>Acessar Painel</Link>
           </Button>
