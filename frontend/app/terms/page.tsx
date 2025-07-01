@@ -6,7 +6,7 @@ export default function TermsPage() {
 
   return (
     <>
-      <Header />
+      <Header page="terms" />
       <main className="container mx-auto py-6 px-4 text-start flex flex-col items-start justify-start gap-3">
         <section>
           <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-balance">

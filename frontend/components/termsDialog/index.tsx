@@ -27,32 +27,30 @@ export function TermsDialog({
   onOpenChange,
   onAccept,
 }: AlertDialogProps) {
-  const [isTermChecked, setIsTermChecked] = useState(true)
+  const [isTermChecked, setIsTermChecked] = useState(false)
 
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Termos de uso</AlertDialogTitle>
-          <AlertDialogDescription>
-            <p>{termsOfUse.greeting}</p>
-          </AlertDialogDescription>
+          <AlertDialogDescription>{termsOfUse.greeting}</AlertDialogDescription>
         </AlertDialogHeader>
         <Separator />
-        <AlertDialogDescription className="max-h-[40vh] pb-4 overflow-y-auto">
+        <section className="max-h-[40vh] pb-4 text-neutral-600 overflow-y-auto">
           {termsOfUse.sections.map((section, index) => (
             <article key={index}>
-              <h2 className="scroll-m-20 text-xl font-semibold tracking-tight mt-4">
+              <h2 className="scroll-m-20 text-lg font-semibold tracking-tight mt-4">
                 {section.heading}
               </h2>
               {section.content.map((content, index) => (
-                <p className="mt-2" key={index}>
+                <p className="mt-2 text-sm" key={index}>
                   {content}
                 </p>
               ))}
             </article>
           ))}
-        </AlertDialogDescription>
+        </section>
         <Separator />
         <AlertDialogFooter className="flex sm:flex-col gap-4 mt-4">
           <div className="flex items-center gap-2">
@@ -61,15 +59,15 @@ export function TermsDialog({
               className="border-neutral-400"
               onCheckedChange={(checked) =>
                 checked == true
-                  ? setIsTermChecked(false)
-                  : setIsTermChecked(true)
+                  ? setIsTermChecked(true)
+                  : setIsTermChecked(false)
               }
             />
             <Label htmlFor="terms-2" className="gap-1 text-neutral-500">
               Aceito os Termos de Uso
             </Label>
           </div>
-          <AlertDialogAction disabled={isTermChecked} onClick={onAccept}>
+          <AlertDialogAction disabled={!isTermChecked} onClick={onAccept}>
             Continuar
           </AlertDialogAction>
         </AlertDialogFooter>

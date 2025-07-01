@@ -42,7 +42,9 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastro</DialogTitle>
-          <DialogDescription>Cadastro realizado com sucesso!</DialogDescription>
+          <DialogDescription>
+            Username cadastrado com sucesso!
+          </DialogDescription>
           <Alert variant="destructive">
             <AlertCircleIcon />
             <AlertTitle>As credenciais são exibidas apenas uma vez.</AlertTitle>

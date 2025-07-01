@@ -15,11 +15,14 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header page="home" />
       <div className="flex items-center justify-center">
         <Hero />
-      </div >
-      <DisclaimerDialog open={showDisclaimer} onOpenChange={setShowDisclaimer} />
+      </div>
+      <DisclaimerDialog
+        open={showDisclaimer}
+        onOpenChange={setShowDisclaimer}
+      />
     </>
   )
 }
