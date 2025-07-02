@@ -30,7 +30,7 @@ def generate_url_data(db: Session, username: str) -> Url:
     creation_date = int(datetime.now(TIMEZONE).timestamp())
     expiration_date = creation_date + (3600 * 24 * 30)
     shortened_url = f"{BASE_URL}/{token}"
-    original_url = f"{BASE_URL}/home?target={token}"
+    original_url = f"{BASE_URL}/demo"
 
     try:
         url = Url(

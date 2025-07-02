@@ -20,7 +20,9 @@ def create_access_token(username: str, user_id: int, expires_delta: timedelta):
 
 
 def authenticate_user(username: str, token: str, db):
-    user = db.query(Url).filter(Url.username == username).first()
+    user = (
+        db.query(Url).filter((Url.username == username) & (Url.token == token)).first()
+    )
     if not user:
         return False
     if user.token != token:

@@ -49,7 +49,8 @@ def create_url(url: UrlCreateSchema, db: Session = Depends(get_db)):
         db.add(url_data)
         db.commit()
         db.refresh(url_data)
-        return APIResponse(message="URL criada com sucesso!")
+        data = UrlReadSchema.model_validate(url_data)
+        return APIResponse(message="URL criada com sucesso!", data=data)
 
     except Exception as e:
         raise HTTPException(
