@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Quicksand } from "next/font/google"
 
 import { TokenDialog } from "@/components/tokenDialog"
-import { Form } from "@/components/form"
+import { SignUpForm } from "../signUpForm"
 import { TermsDialog } from "@/components/termsDialog"
 
 const quicksand = Quicksand({
@@ -39,7 +39,7 @@ export function Hero() {
             Informe um username, gere seu token e acompanhe quem clicou no seu
             link.
           </h4>
-          <Form onSubmitSuccess={handleFormSuccess} />
+          <SignUpForm onSubmitSuccess={handleFormSuccess} />
         </div>
         <div className="z-[-2] w-100">
           <div className="bubble"></div>
