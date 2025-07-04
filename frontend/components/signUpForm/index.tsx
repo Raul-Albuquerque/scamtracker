@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input"
 const formSchema = z.object({
   username: z
     .string()
+    .trim()
     .min(3, {
       message: "Seu username precisa ter entre 3 e 20 caracteres.",
     })
@@ -27,7 +28,7 @@ const formSchema = z.object({
 })
 
 type FormProps = {
-  onSubmitSuccess: () => void
+  onSubmitSuccess: (username: string) => void
 }
 
 export function SignUpForm({ onSubmitSuccess }: FormProps) {
@@ -38,11 +39,8 @@ export function SignUpForm({ onSubmitSuccess }: FormProps) {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    onSubmitSuccess()
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    onSubmitSuccess(values.username)
   }
 
   return (
