@@ -1,7 +1,7 @@
 import { api } from "./api"
-import { UserCreateSchema, UserCreateResponse, UserLoginSchema, UserLoginResponse } from "@/types/user"
+import { UserCreatePayload, UserCreateResponse, UserLoginPayload, UserLoginResponse } from "@/types/user"
 
-export async function createUser(data: UserCreateSchema): Promise<UserCreateResponse> {
+export async function createUser(data: UserCreatePayload): Promise<UserCreateResponse> {
   try {
     const response = await api.post<UserCreateResponse>("/url/create", data)
     return response.data
@@ -10,7 +10,7 @@ export async function createUser(data: UserCreateSchema): Promise<UserCreateResp
   }
 }
 
-export async function loginUser(data: UserLoginSchema): Promise<UserLoginResponse> {
+export async function loginUser(data: UserLoginPayload): Promise<UserLoginResponse> {
   try {
     const response = await api.post<UserLoginResponse>("/auth", data)
     return response.data

@@ -1,8 +1,8 @@
-export interface UserCreateSchema {
+export interface UserCreatePayload {
   username: string
 }
 
-export interface UserLoginSchema extends UserCreateSchema {
+export interface UserLoginPayload extends UserCreatePayload {
   token: string
 }
 
