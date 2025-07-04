@@ -1,4 +1,4 @@
-import { api } from "./api"
+import { api } from "@/services/api"
 import { UserCreatePayload, UserCreateResponse, UserLoginPayload, UserLoginResponse } from "@/types/user"
 
 export async function createUser(data: UserCreatePayload): Promise<UserCreateResponse> {

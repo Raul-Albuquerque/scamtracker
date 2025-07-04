@@ -7,8 +7,9 @@ import { Quicksand } from "next/font/google"
 import { TokenDialog } from "@/components/tokenDialog"
 import { SignUpForm } from "@/components/signUpForm"
 import { TermsDialog } from "@/components/termsDialog"
-import { createUser } from "@/services/auth"
 import { UserSchema } from "@/types/user"
+import { signUp } from "@/lib/auth/signup"
+import { login } from "@/lib/auth/login"
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -30,8 +31,12 @@ export function Hero() {
     setIsTermsOpen(false)
 
     try {
-      const payload = await createUser({ username })
-      setUserData(payload.data)
+      const signUpResponse = await signUp({ username })
+      await login({
+        username: signUpResponse.username,
+        token: signUpResponse.token,
+      })
+      setUserData(signUpResponse)
       setIsTokenOpen(true)
     } catch (err) {
       alert("Erro ao criar usuário")

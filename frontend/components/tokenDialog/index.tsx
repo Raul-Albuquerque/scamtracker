@@ -26,8 +26,6 @@ import {
 import { banks } from "@/constants/banks"
 import { downloadCredencials } from "@/functions/downloadCredencials"
 import { UserSchema } from "@/types/user"
-import { checkTokenOnCookies } from "@/actions/cookies"
-import { useRouter } from "next/navigation"
 
 interface FormDialogProps {
   open: boolean
@@ -40,16 +38,6 @@ export function TokenDialog({ open, onOpenChange, data }: FormDialogProps) {
   const [selectedBank, setSelectedBank] = useState("inter")
   const [isCredencialsSaved, setIsCredencialsSaved] = useState(false)
   const bankList = Object.entries(banks)
-  const router = useRouter()
-
-  async function loginHandler() {
-    const isUserAuth = await checkTokenOnCookies()
-    if (isUserAuth) {
-      router.push("/dashboard")
-    } else {
-      setIsCredencialsSaved(true)
-    }
-  }
 
   if (!data) return null
 
@@ -180,9 +168,8 @@ export function TokenDialog({ open, onOpenChange, data }: FormDialogProps) {
             variant={"outline"}
             className="cursor-pointer"
             disabled={!isCredencialsSaved}
-            onClick={loginHandler}
           >
-            Acessar Painel
+            <Link href={"/dashboard"}>Acessar Painel</Link>
           </Button>
         </DialogFooter>
       </DialogContent>
