@@ -5,8 +5,10 @@ import Image from "next/image"
 import { Quicksand } from "next/font/google"
 
 import { TokenDialog } from "@/components/tokenDialog"
-import { SignUpForm } from "../signUpForm"
+import { SignUpForm } from "@/components/signUpForm"
 import { TermsDialog } from "@/components/termsDialog"
+import { createUser } from "@/services/auth"
+import { UserSchema } from "@/types/user"
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -16,14 +18,24 @@ const quicksand = Quicksand({
 export function Hero() {
   const [isTermsOpen, setIsTermsOpen] = useState(false)
   const [isTokenOpen, setIsTokenOpen] = useState(false)
+  const [username, setusername] = useState("")
+  const [userData, setUserData] = useState<UserSchema | null>(null)
 
-  const handleFormSuccess = () => {
+  const handleFormSuccess = (username: string) => {
+    setusername(username)
     setIsTermsOpen(true)
   }
 
-  const handleTermsAccepted = () => {
+  const handleTermsAccepted = async () => {
     setIsTermsOpen(false)
-    setIsTokenOpen(true)
+
+    try {
+      const payload = await createUser({ username })
+      setUserData(payload.data)
+      setIsTokenOpen(true)
+    } catch (err) {
+      alert("Erro ao criar usuário")
+    }
   }
 
   return (
@@ -54,12 +66,17 @@ export function Hero() {
             height={120}
           />
         </div>
+
         <TermsDialog
           open={isTermsOpen}
           onOpenChange={setIsTermsOpen}
           onAccept={handleTermsAccepted}
         />
-        <TokenDialog open={isTokenOpen} onOpenChange={setIsTokenOpen} />
+        <TokenDialog
+          open={isTokenOpen}
+          onOpenChange={setIsTokenOpen}
+          data={userData}
+        />
       </main>
     </>
   )

@@ -1,15 +1,9 @@
 "use client"
 
-import {
-  ChevronsUpDown,
-  LogOut,
-} from "lucide-react"
+import { useRouter } from "next/navigation"
+import { ChevronsUpDown, LogOut } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { logout } from "@/lib/auth/logout"
 
 export function NavUser({
   user,
@@ -35,6 +30,12 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+  const router = useRouter()
+
+  function logoutHandler() {
+    logout()
+    router.refresh()
+  }
 
   return (
     <SidebarMenu>
@@ -73,7 +74,7 @@ export function NavUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={logoutHandler}>
               <LogOut />
               Encerrar sessão
             </DropdownMenuItem>

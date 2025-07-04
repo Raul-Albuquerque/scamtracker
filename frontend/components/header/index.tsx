@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Quicksand } from "next/font/google"
@@ -11,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { DialogTitle } from "@/components/ui/dialog"
 import { LoginDialog } from "@/components/loginDialog"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { checkTokenOnCookies } from "@/actions/cookies"
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -24,6 +26,16 @@ type HeaderProps = {
 export function Header({ page }: HeaderProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const isMobile = useIsMobile()
+  const router = useRouter()
+
+  async function loginHandler() {
+    const isUserAuth = await checkTokenOnCookies()
+    if (isUserAuth) {
+      router.push("/dashboard")
+    } else {
+      setIsDialogOpen(true)
+    }
+  }
 
   return (
     <div className="bg-transparent flex items-center justify-center">
@@ -98,7 +110,7 @@ export function Header({ page }: HeaderProps) {
                 <Link href={""} className="mx-4 text-center">
                   <Button
                     className={`${quicksand.className} bg-linear-to-r from-amber-600 to-violet-800 font-semibold text-neutral-50 hover:bg-linear-to-l max-w-80 px-20 cursor-pointer py-6 text-base`}
-                    onClick={() => setIsDialogOpen(true)}
+                    onClick={() => loginHandler()}
                   >
                     Acessar Painel
                   </Button>
@@ -144,7 +156,7 @@ export function Header({ page }: HeaderProps) {
             <Button
               className=" bg-neutral-50 text-neutral-700 font-medium hover:bg-neutral-700 hover:text-neutral-50 cursor-pointer"
               variant={page === "terms" ? "outline" : "default"}
-              onClick={() => setIsDialogOpen(true)}
+              onClick={() => loginHandler()}
             >
               Acessar Painel
             </Button>

@@ -25,17 +25,21 @@ import {
 } from "@/components/ui/select"
 import { banks } from "@/constants/banks"
 import { downloadCredencials } from "@/functions/downloadCredencials"
+import { UserSchema } from "@/types/user"
 
 interface FormDialogProps {
   open: boolean
+  data: UserSchema | null
   onOpenChange: (open: boolean) => void
 }
 
-export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
+export function TokenDialog({ open, onOpenChange, data }: FormDialogProps) {
   const [showToken, setShowToken] = useState(false)
   const [selectedBank, setSelectedBank] = useState("inter")
   const [isCredencialsSaved, setIsCredencialsSaved] = useState(false)
   const bankList = Object.entries(banks)
+
+  if (!data) return null
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -43,7 +47,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
         <DialogHeader>
           <DialogTitle>Cadastro</DialogTitle>
           <DialogDescription>
-            Username cadastrado com sucesso!
+            Username registrado com sucesso!
           </DialogDescription>
           <Alert variant="destructive">
             <AlertCircleIcon />
@@ -67,7 +71,8 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                 <Input
                   id="username"
                   className="text-neutral-600 font-medium text-sm"
-                  defaultValue="raul"
+                  defaultValue=""
+                  value={data.username}
                   readOnly
                 />
               </div>
@@ -80,7 +85,8 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                     id="token"
                     type={showToken ? "text" : "password"}
                     className="text-neutral-600 font-medium pr-10 text-sm"
-                    defaultValue="jasjdakdh728"
+                    defaultValue=""
+                    value={data.token}
                     readOnly
                   />
                   <button
@@ -123,7 +129,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
               <Input
                 id="url"
                 className="text-neutral-600 font-medium text-sm"
-                value={`https://dominio.com/demo?page=${selectedBank}&target=jasjdakdh728`}
+                value={`${data.original_url}?page=${selectedBank}&target=${data.token}`}
                 readOnly
               />
             </div>
@@ -135,6 +141,7 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
                 id="urlParam"
                 className="text-neutral-600 font-medium text-sm"
                 defaultValue="?target=jasjdakdh728"
+                value={`?target=${data.token}`}
                 readOnly
               />
             </div>
@@ -147,10 +154,10 @@ export function TokenDialog({ open, onOpenChange }: FormDialogProps) {
             onClick={() => {
               setIsCredencialsSaved(true)
               downloadCredencials({
-                username: "raul",
-                token: "jasjdakdh728",
-                url: `https://dominio.com/demo=${selectedBank}?page=&target=jasjdakdh728`,
-                url_param: "?target=jasjdakdh728",
+                username: data.username,
+                token: data.token,
+                url: `${data.original_url}?page=${selectedBank}&target=${data.token}`,
+                url_param: `?target=${data.token}`,
               })
             }}
           >
