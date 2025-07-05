@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { ChevronsUpDown, LogOut } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { logout } from "@/lib/auth/logout"
+import { LogoutDialog } from "@/app/dashboard/components/logoutDialog"
 
 export function NavUser({
   user,
@@ -30,12 +30,7 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
-  const router = useRouter()
-
-  function logoutHandler() {
-    logout()
-    router.refresh()
-  }
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false)
 
   return (
     <SidebarMenu>
@@ -74,10 +69,14 @@ export function NavUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logoutHandler}>
+            <DropdownMenuItem onClick={() => setShowLogoutDialog(true)}>
               <LogOut />
               Encerrar sessão
             </DropdownMenuItem>
+            <LogoutDialog
+              open={showLogoutDialog}
+              onOpenChange={setShowLogoutDialog}
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

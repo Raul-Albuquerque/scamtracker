@@ -1,6 +1,6 @@
 import { BankInfo } from "@/types/bank"
 
-export const banks: Record<string, BankInfo> = {
+export const BANKS: Record<string, BankInfo> = {
   santander: {
     name: "santander",
     background: "bg-red-600",

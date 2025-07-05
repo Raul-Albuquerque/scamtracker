@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { banks } from "@/constants/banks"
+import { BANKS } from "@/constants/banks"
 import { downloadCredencials } from "@/functions/downloadCredencials"
 import { UserSchema } from "@/types/user"
 
@@ -37,7 +37,7 @@ export function TokenDialog({ open, onOpenChange, data }: FormDialogProps) {
   const [showToken, setShowToken] = useState(false)
   const [selectedBank, setSelectedBank] = useState("inter")
   const [isCredencialsSaved, setIsCredencialsSaved] = useState(false)
-  const bankList = Object.entries(banks)
+  const bankList = Object.entries(BANKS)
 
   if (!data) return null
 
