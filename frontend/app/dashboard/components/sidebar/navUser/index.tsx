@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { LogoutDialog } from "@/app/dashboard/components/logoutDialog"
+import { LogoutDialog } from "@/components/dialogs/logoutDialog"
 
 export function NavUser({
   user,

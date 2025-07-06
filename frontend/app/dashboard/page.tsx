@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/app/dashboard/components/sidebar"
 import { Chart } from "@/app/dashboard/components/chart"
 import { CustomTable } from "@/app/dashboard/components/table"
 import {
@@ -38,7 +38,9 @@ const DashboardPage = () => {
               <BreadcrumbList>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="capitalize">{activeItem}</BreadcrumbPage>
+                  <BreadcrumbPage className="capitalize">
+                    {activeItem}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -49,7 +51,7 @@ const DashboardPage = () => {
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
               <SectionCards />
             </div>
-            <div className="px-4 lg:px-6" >
+            <div className="px-4 lg:px-6">
               <Chart />
             </div>
           </div>
@@ -58,7 +60,6 @@ const DashboardPage = () => {
             <CustomTable />
           </div>
         )}
-
       </SidebarInset>
     </SidebarProvider>
   )

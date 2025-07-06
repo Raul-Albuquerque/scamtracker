@@ -3,12 +3,8 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  ChartColumnBig,
-  SquareActivity
-} from "lucide-react"
+import { ChartColumnBig, SquareActivity } from "lucide-react"
 
-import { NavUser } from "@/components/nav-user"
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +12,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-
+import { NavUser } from "./navUser"
 
 type AppSidebarProps = {
   activeItem: string
@@ -29,7 +25,7 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: []
+  teams: [],
 }
 
 export function AppSidebar({
@@ -39,14 +35,23 @@ export function AppSidebar({
 }: AppSidebarProps) {
   const navItems = [
     { key: "overview", title: "Overview", icon: ChartColumnBig },
-    { key: "Lista de acessos", title: "Lista de acessos", icon: SquareActivity },
+    {
+      key: "Lista de acessos",
+      title: "Lista de acessos",
+      icon: SquareActivity,
+    },
   ]
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <Link href={"/"} className="py-4 mx-2">
-          <Image src={"/static/images/logo-black.svg"} alt="Scamtracker logo" width={120} height={24} />
+          <Image
+            src={"/static/images/logo-black.svg"}
+            alt="Scamtracker logo"
+            width={120}
+            height={24}
+          />
         </Link>
       </SidebarHeader>
       <SidebarContent>
@@ -55,8 +60,9 @@ export function AppSidebar({
             <button
               key={item.key}
               onClick={() => setActiveItem(item.key)}
-              className={`flex items-center gap-2 p-2 text-sm rounded-md hover:bg-muted transition ${activeItem === item.key ? "bg-muted font-semibold" : ""
-                }`}
+              className={`flex items-center gap-2 p-2 text-sm rounded-md hover:bg-muted transition ${
+                activeItem === item.key ? "bg-muted font-semibold" : ""
+              }`}
             >
               <item.icon className="h-4 w-4" />
               <span>{item.title}</span>

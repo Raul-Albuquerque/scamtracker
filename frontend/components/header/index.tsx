@@ -10,7 +10,7 @@ import { AlignJustify, BookAlert, Github, Home } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { DialogTitle } from "@/components/ui/dialog"
-import { LoginDialog } from "@/components/loginDialog"
+import { LoginDialog } from "@/components/dialogs/loginDialog"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { checkTokenOnCookies } from "@/actions/cookies"
 
