@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { LogoutDialog } from "@/components/dialogs/logoutDialog"
+import { LogoutDialog } from "@/components/dialogs"
 
 export function NavUser({
   user,
@@ -69,17 +69,21 @@ export function NavUser({
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => setShowLogoutDialog(true)}>
+            <DropdownMenuItem
+              onClick={() => {
+                requestAnimationFrame(() => setShowLogoutDialog(true))
+              }}
+            >
               <LogOut />
               Encerrar sessão
             </DropdownMenuItem>
-            <LogoutDialog
-              open={showLogoutDialog}
-              onOpenChange={setShowLogoutDialog}
-            />
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
+      <LogoutDialog
+        open={showLogoutDialog}
+        onOpenChange={setShowLogoutDialog}
+      />
     </SidebarMenu>
   )
 }
