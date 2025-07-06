@@ -18,7 +18,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { SectionCards } from "@/components/section-cards"
+import { SectionCards } from "@/components/sectionCards"
 
 const DashboardPage = () => {
   const [activeItem, setActiveItem] = useState("overview")
