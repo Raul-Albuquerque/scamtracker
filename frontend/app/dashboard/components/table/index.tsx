@@ -35,7 +35,7 @@ import {
 } from "@/components/ui/table"
 
 import { Access } from "@/types/access"
-import { DashboardDialog } from "@/app/dashboard/components/dashboardDialog"
+import { DetailsDialog } from "@/components/dialogs"
 
 const data: Access[] = [
   {
@@ -112,8 +112,8 @@ const data: Access[] = [
     country: "Alemanha",
     country_flag_url: "https://flagcdn.com/de.svg",
     country_emoji: "🇩🇪",
-    latitude: 52.5200,
-    longitude: 13.4050,
+    latitude: 52.52,
+    longitude: 13.405,
     postal: "10115",
     access_timestamp: 1718800300,
     url_id: 105,
@@ -145,7 +145,7 @@ const data: Access[] = [
     country_flag_url: "https://flagcdn.com/us.svg",
     country_emoji: "🇺🇸",
     latitude: 40.7128,
-    longitude: -74.0060,
+    longitude: -74.006,
     postal: "10001",
     access_timestamp: 1718800500,
     url_id: 107,
@@ -160,8 +160,8 @@ const data: Access[] = [
     country: "Canadá",
     country_flag_url: "https://flagcdn.com/ca.svg",
     country_emoji: "🇨🇦",
-    latitude: 43.6510,
-    longitude: -79.3470,
+    latitude: 43.651,
+    longitude: -79.347,
     postal: "M5H 2N2",
     access_timestamp: 1718800600,
     url_id: 108,
@@ -197,7 +197,7 @@ const data: Access[] = [
     postal: "2000",
     access_timestamp: 1718800800,
     url_id: 110,
-  }
+  },
 ]
 
 export const columns: ColumnDef<Access>[] = [
@@ -245,7 +245,9 @@ export const columns: ColumnDef<Access>[] = [
     cell: ({ row }) => {
       const access = row.original
       return (
-        <div>{access.country_emoji} {access.country}</div>
+        <div>
+          {access.country_emoji} {access.country}
+        </div>
       )
     },
   },
@@ -278,14 +280,12 @@ export const columns: ColumnDef<Access>[] = [
       const formatted = `${day} ${month} ${year} - ${hours}:${minutes}${period}`
 
       return <div className="text-sm">{formatted}</div>
-    }
-
+    },
   },
   {
     id: "actions",
     enableHiding: false,
     cell: () => {
-
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -352,8 +352,10 @@ export function CustomTable() {
               .getAllColumns()
               .filter((column) => column.getCanHide())
               .map((column) => {
-                const text = column.id === "access_timestamp" ? "Horário" : column.id
-                const className = column.id.length <= 2 ? "uppercase" : "capitalize"
+                const text =
+                  column.id === "access_timestamp" ? "Horário" : column.id
+                const className =
+                  column.id.length <= 2 ? "uppercase" : "capitalize"
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
@@ -372,7 +374,8 @@ export function CustomTable() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="">
-              {table.getState().pagination.pageSize} Linhas por página <ChevronDown />
+              {table.getState().pagination.pageSize} Linhas por página{" "}
+              <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -400,9 +403,9 @@ export function CustomTable() {
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
                   )
                 })}
@@ -466,9 +469,7 @@ export function CustomTable() {
           </Button>
         </div>
       </div>
-      <DashboardDialog
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen} />
+      <DetailsDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </div>
   )
 }

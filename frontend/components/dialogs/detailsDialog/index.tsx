@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { GoogleMaps } from "../map"
+import { GoogleMaps } from "../../../app/dashboard/components/map"
 import { Separator } from "@/components/ui/separator"
 
 interface ItemDialogProps {
@@ -16,7 +16,7 @@ interface ItemDialogProps {
   onOpenChange: (open: boolean) => void
 }
 
-export function DashboardDialog({ open, onOpenChange }: ItemDialogProps) {
+export function DetailsDialog({ open, onOpenChange }: ItemDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -74,13 +74,11 @@ export function DashboardDialog({ open, onOpenChange }: ItemDialogProps) {
         <Separator />
         <div className="grid gap-4 text-sm">
           <h5 className="font-semibold text-neutral-700 mb-1">Google Maps</h5>
-          <GoogleMaps lat={19.0760} lng={72.8777} />
+          <GoogleMaps lat={19.076} lng={72.8777} />
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button">
-              Fechar
-            </Button>
+            <Button type="button">Fechar</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

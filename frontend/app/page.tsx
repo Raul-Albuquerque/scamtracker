@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { DisclaimerDialog } from "@/components/dialogs/disclaimerDialog"
+import { DisclaimerDialog } from "@/components/dialogs"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 
