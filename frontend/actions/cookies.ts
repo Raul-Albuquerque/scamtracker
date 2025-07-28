@@ -1,27 +1,23 @@
 "use server"
 
 import { cookies } from "next/headers"
-import { TOKEN_KEY } from "@/middleware"
+import { cookieTokenOptions, clearTokenCookie } from "@/lib/auth/cookie"
 
 export async function saveTokenOnCookies(token: string) {
   const cookieStore = await cookies()
   cookieStore.set({
-    name: TOKEN_KEY,
+    ...cookieTokenOptions,
     value: token,
-    httpOnly: true,
-    path: "/"
   })
 }
 
 export async function deleteTokenOnCookies() {
-  const cookiesData = await cookies()
-  cookiesData.delete(TOKEN_KEY)
+  const cookieStore = await cookies()
+  cookieStore.set(clearTokenCookie())
 }
 
 export async function checkTokenOnCookies() {
-  const cookiesData = await cookies()
-  const token = cookiesData.get(TOKEN_KEY)
+  const cookieStore = await cookies()
+  const token = cookieStore.get(cookieTokenOptions.name)
   return Boolean(token?.value)
 }
-
-// export async function getUserFromToken
