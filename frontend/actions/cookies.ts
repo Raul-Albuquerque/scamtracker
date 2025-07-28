@@ -1,7 +1,6 @@
 "use server"
 
 import { cookies } from "next/headers"
-
 import { TOKEN_KEY } from "@/middleware"
 
 export async function saveTokenOnCookies(token: string) {
@@ -24,3 +23,5 @@ export async function checkTokenOnCookies() {
   const token = cookiesData.get(TOKEN_KEY)
   return Boolean(token?.value)
 }
+
+// export async function getUserFromToken

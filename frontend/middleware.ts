@@ -2,7 +2,6 @@ import { jwtVerify } from "jose"
 import { NextRequest, NextResponse } from "next/server"
 import { deleteTokenOnCookies } from "./actions/cookies"
 
-
 const SECRET = new TextEncoder().encode(process.env.NEXT_PUBLIC_AUTH_SECRET_KEY!)
 export const TOKEN_KEY = "token"
 
@@ -22,6 +21,7 @@ export async function middleware(request: NextRequest) {
   } catch (err) {
     console.error("Token inválido:", err)
     deleteTokenOnCookies()
+    return NextResponse.redirect(new URL("/", request.url))
   }
 }
 
